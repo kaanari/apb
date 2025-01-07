@@ -86,7 +86,7 @@ module tb_apb_regs;
     automatic reg_data_t init_val;
     // initialize reset values and golden model
     for (int unsigned i = 0; i < NoApbRegs; i++) begin
-      init_val       = reg_data_t'($urandom());
+      init_val       = ReadOnly[i] ? reg_data_t'($urandom()) : 32'd0;
       reg_init[i]    = init_val;
       reg_compare[i] = init_val;
     end
